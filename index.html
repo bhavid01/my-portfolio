@@ -19,57 +19,77 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#projects">Work</a>
+      <a href="#experience">Experience</a>
     </div>
   </nav>
 
   <!-- Hero section with background image and call to action -->
   <section id="hero">
     <div class="content">
-      <h1>Welcome to my portfolio</h1>
-      <p>I'm a multidisciplinary creator who enjoys turning ideas into beautiful, interactive experiences. Explore my work below.</p>
-      <a href="#projects" class="btn">View Projects</a>
+      <h1>Bringing Ideas to Life</h1>
+      <p>I'm a creative technologist based in Sewickley, Pennsylvania, crafting interactive experiences where design meets code.</p>
+      <a href="#projects" class="btn">Explore My Work</a>
+    </div>
+  </section>
+
+  <!-- Experience section -->
+  <section id="experience" class="fade-in">
+    <h2>Experience</h2>
+    <div class="experience-timeline">
+      <div class="experience-item">
+        <h3>Senior Web Developer – Innovative Solutions (2023 – Present)</h3>
+        <p>Leading front‑end development and designing interactive, data‑driven applications that delight users.</p>
+      </div>
+      <div class="experience-item">
+        <h3>UX Designer – Creative Agency (2021 – 2023)</h3>
+        <p>Crafted intuitive user experiences across web and mobile platforms while collaborating with cross‑functional teams.</p>
+      </div>
+      <div class="experience-item">
+        <h3>Interactive Media Student – Design School (2019 – 2021)</h3>
+        <p>Studied interaction design and prototyping, developing a passion for merging aesthetics with technology.</p>
+      </div>
     </div>
   </section>
 
   <!-- About section -->
-  <section id="about">
+  <section id="about" class="fade-in">
     <h2>About Me</h2>
     <p>
-      Hello! I'm <strong>Your Name</strong>, a designer and developer based in Sewickley, Pennsylvania. I craft digital products that combine thoughtful user experiences with elegant visual design. With a passion for continuous learning and experimentation, I enjoy exploring new tools and technologies to bring unique ideas to life.
+      With a background spanning UI/UX design, front‑end development and interactive media, I thrive on bridging the gap between aesthetics and functionality. I believe that well‑crafted digital experiences can tell compelling stories and make complex ideas accessible.
     </p>
     <p>
-      This portfolio showcases some of my favourite projects across web design, app development and creative experimentation. Each piece reflects my commitment to clean aesthetics, intuitive interactions and meticulous attention to detail.
+      On this portfolio you'll find a curated selection of my work—from web applications and prototypes to experimental art projects. Each piece reflects my dedication to thoughtful design, technical rigour and continual exploration.
     </p>
   </section>
 
   <!-- Projects section -->
-  <section id="projects">
+  <section id="projects" class="fade-in">
     <h2>Projects</h2>
     <div class="project-grid">
       <!-- Project card 1 -->
       <div class="project-card">
-        <h3>Project One</h3>
-        <p>A brief description of your project goes here. Summarise what it does, why it exists and the technologies you used.</p>
-        <a href="https://drive.google.com/drive/folders/your-folder-id" target="_blank" rel="noopener noreferrer">View on Google Drive →</a>
+        <h3>AI Storyteller</h3>
+        <p>An experimental web app that uses machine learning to generate interactive narratives. I designed the interface and implemented the front‑end in React while fine‑tuning GPT models for creative text generation.</p>
+        <a href="https://drive.google.com/drive/folders/your-folder-id" target="_blank" rel="noopener noreferrer">Open project on Google Drive →</a>
       </div>
       <!-- Project card 2 -->
       <div class="project-card">
-        <h3>Project Two</h3>
-        <p>Share a few details about this project. Highlight any challenges overcome or interesting outcomes achieved.</p>
-        <a href="https://drive.google.com/drive/folders/your-folder-id" target="_blank" rel="noopener noreferrer">View on Google Drive →</a>
+        <h3>Interactive Data Explorer</h3>
+        <p>A visualisation dashboard that turns complex datasets into insightful, interactive charts. I built custom D3 visualisations and ensured responsive design across devices.</p>
+        <a href="https://drive.google.com/drive/folders/your-folder-id" target="_blank" rel="noopener noreferrer">Open project on Google Drive →</a>
       </div>
       <!-- Project card 3 -->
       <div class="project-card">
-        <h3>Project Three</h3>
-        <p>Describe your third project here. What problem does it solve? What did you learn from the process?</p>
-        <a href="https://drive.google.com/drive/folders/your-folder-id" target="_blank" rel="noopener noreferrer">View on Google Drive →</a>
+        <h3>Generative Art Experiment</h3>
+        <p>A series of generative artworks created with JavaScript and WebGL. This project explores algorithmic aesthetics, randomness and user interaction.</p>
+        <a href="https://drive.google.com/drive/folders/your-folder-id" target="_blank" rel="noopener noreferrer">Open project on Google Drive →</a>
       </div>
       <!-- Additional projects can be added here following the same pattern -->
     </div>
   </section>
 
   <!-- Contact section -->
-  <section id="contact">
+  <section id="contact" class="fade-in">
     <h2>Contact</h2>
     <p>I'd love to hear from you. Whether you have a project in mind or just want to say hello, feel free to get in touch!</p>
     <div class="contact-list">
@@ -91,6 +111,18 @@
         }
       });
     });
+
+    // Intersection observer to animate sections when they enter the viewport
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
