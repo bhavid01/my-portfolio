@@ -1,0 +1,285 @@
+/*
+ * Portfolio site CSS inspired by Dora AI design
+ * This stylesheet defines a clean, modern layout with a light colour palette
+ * and simple typography. Sections are spaced generously and use flexbox/grid
+ * for responsive behaviour. Adjust variables at the top to customise the look.
+ */
+
+/* CSS custom properties for easy colour and font management */
+:root {
+  /*
+   * Colour palette
+   * A vibrant, colourful scheme replaces the minimal greys. Feel free to
+   * customise these variables to your favourite hues. Colours were chosen
+   * for good contrast and a cheerful look.
+   */
+  --primary-colour: #1f2937;     /* Nearly black text colour for headings */
+  --text-colour: #374151;        /* Dark grey for body text */
+  --accent-colour: #e63a7a;      /* Pink accent used on buttons and links */
+  --background-colour: #fafafa;  /* Light grey page background */
+  --light-grey: #ffffff;         /* Card backgrounds */
+  --border-colour: #e5e7eb;      /* Card border colour */
+  --shadow-colour: rgba(31, 41, 55, 0.05); /* Card shadow colour */
+  --font-family: 'Inter', sans-serif;
+
+  /* Section background tints for a colourful page */
+  --about-bg: #fff5f5;    /* Light pink for About */
+  --projects-bg: #f0fdf4; /* Light green for Projects */
+  --contact-bg: #eef2ff; /* Light purple for Contact */
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--text-colour);
+  background: var(--background-colour);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Navigation bar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-colour);
+  z-index: 1000;
+}
+
+nav .logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary-colour);
+  text-decoration: none;
+}
+
+nav .nav-links a {
+  margin-left: 20px;
+  color: var(--primary-colour);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+  font-size: 1rem;
+}
+
+nav .nav-links a:hover {
+  color: var(--accent-colour);
+}
+
+/* Hero section */
+#hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 80px; /* offset for fixed nav */
+  position: relative;
+  /*
+   * Background image for the hero section. The image is stored at the root of
+   * the project in the repository as hero.png. When uploading to GitHub
+   * remember to keep hero.png at the top level of the repository so that
+   * this relative path resolves correctly.
+   */
+  background-image: url('hero.png');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: var(--primary-colour);
+}
+
+/* Semi‑transparent overlay on the hero to improve text contrast */
+#hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
+#hero .content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 20px;
+}
+
+#hero h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 15px 30px;
+  background: var(--accent-colour);
+  color: #ffffff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #c72461;
+}
+
+/* Remove the heavy default focus outline on anchors and buttons to prevent
+   large blue highlight from overlaying the page. Instead use a subtle
+   border colour when focusing for accessibility. */
+a:focus,
+.btn:focus {
+  outline: 2px dashed var(--accent-colour);
+  outline-offset: 2px;
+}
+
+/* Generic section spacing */
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--primary-colour);
+  position: relative;
+}
+
+/* About section */
+#about p {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Colourful section backgrounds */
+#about {
+  background-color: var(--about-bg);
+}
+
+#projects {
+  background-color: var(--projects-bg);
+}
+
+#contact {
+  background-color: var(--contact-bg);
+}
+
+/* Projects section */
+#projects .project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.project-card {
+  background: #ffffff;
+  border: 1px solid var(--border-colour);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px var(--shadow-colour);
+  transition: transform 0.2s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--primary-colour);
+}
+
+.project-card p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.project-card a {
+  color: var(--accent-colour);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* Contact section */
+#contact p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+#contact .contact-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+#contact .contact-list a {
+  color: var(--accent-colour);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+#contact .contact-list a:hover {
+  color: #0050c7;
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 2.4rem;
+  }
+  #hero p {
+    font-size: 1rem;
+  }
+  nav {
+    padding: 15px 30px;
+  }
+  nav .nav-links a {
+    margin-left: 20px;
+  }
+  section {
+    padding: 60px 20px;
+  }
+}
